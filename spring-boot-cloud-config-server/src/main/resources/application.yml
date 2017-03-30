@@ -1,11 +1,21 @@
 spring: 
     application: 
         name: config-server
+#下面这种本地git仓库不行，提示必须是http协议的地址
+    cloud: 
+        config: 
+            server: 
+                git: 
+                   uri: file:E:/git2/spring-cloud-config
+                   searchPaths: config/config-repo
+                   username: 
+                   password: 
+#                native: 
+#                    searchLocations: file:E:/git2/spring-cloud-config/config/config-repo/
+
+                
 
 server: 
     port: 8080
     
-eureka: 
-    client: 
-        serviceUrl: 
-            defaultZone: http://localhost:8081/eureka/
+        

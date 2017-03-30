@@ -24,8 +24,20 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka-server</artifactId>
-			<version>1.2.4.RELEASE</version>
 		</dependency>
+
+		<!-- 开始使用配置中心 start -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<!-- 开始使用配置中心 end -->
+		
+		
 	</dependencies>
 
 	<dependencyManagement>
