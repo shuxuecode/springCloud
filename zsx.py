@@ -1,6 +1,12 @@
 import os
+import sys
 
-# os.chdir('E:/git_repo/springBoot') 
+# 获取文件路径
+path = sys.argv[0]
+
+lujing = path[0:-2]
+
+os.chdir(lujing)
 
 os.system("git status")
 
@@ -12,7 +18,7 @@ os.system("git commit -m commitByZsx")
 
 os.system("git push -u origin master")
 
-# os.system("pause")
+os.system("pause")
 
 print("---------------------------------------------------------------")
 print("commit success !!! ok !")
