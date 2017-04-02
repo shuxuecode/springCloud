@@ -27,14 +27,14 @@
 		</dependency>
 
 		<!-- 开始使用配置中心 start -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
+		</dependency> -->
 		<!-- 开始使用配置中心 end -->
 		
 		
@@ -55,6 +55,7 @@
 	<build>
 		<finalName>spring-boot-registry</finalName>
 	</build>
+
 
 	<repositories>
 		<repository>
