@@ -22,6 +22,8 @@ public class ZkTest {
 		System.out.println("查看根节点的子节点:ls / => " + zk.getChildren("/", true));
 		System.out.println("*******************************************************");
 
+		
+		
 		// 关闭连接
 		zk.close();
 
