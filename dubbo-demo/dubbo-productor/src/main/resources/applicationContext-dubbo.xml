@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+       http://www.springframework.org/schema/beans/spring-beans.xsd  
+       http://code.alibabatech.com/schema/dubbo  
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+       ">
+
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="3GOLDENRESTService" />
+
+	<!-- 使用multicast广播注册中心暴露服务地址 <dubbo:registry address="multicast://224.5.6.7:1234" 
+		/> -->
+
+	<!-- 使用zookeeper注册中心暴露服务地址 172.16.2.169-->
+	<dubbo:registry id="defaultRegistry" address="zookeeper://127.0.0.1:2181"
+		timeout="10000"/>
+	
+	<!-- 多个注册中心配置 -->
+	<!-- <dubbo:registry id="crawlerQueryRegistry" address="zookeeper://172.16.2.21:12181"
+		timeout="10000" default="false"/> -->		
+		
+		
+
+	<!-- 用dubbo协议在20880端口暴露服务 <dubbo:protocol name="dubbo" port="20880" /> -->
+
+	<!-- 为了使用HTTPS，暂时使用server="servlet" accepts="500" keepalive="false" extension="com.tg.web.filter.ContentTypeFilter" 
+		暂时禁用ContentTypeFilter com.alibaba.dubbo.rpc.protocol.rest.support.LoggingFilter, -->
+		<!-- contextpath="services" -->
+<!-- 
+	<dubbo:protocol name="rest" port="8080" contextpath="services"
+		server="servlet" />
+-->
+	<dubbo:protocol name="dubbo" port="8780" threads="400"/>
+
+	<!-- todo 暂时去掉 -->
+	<!-- <dubbo:provider filter="typeconvert,securitytoken" /> -->
+
+	<!-- 声明需要暴露的服务接口 -->
+
+	<dubbo:service interface="com.zsx.service.TestService" ref="testService" />
+	
+	<!-- <dubbo:reference interface="com.tg.dc.controller.IsSave2DBService" id="isSave2DBService" timeout="300000" />
+	 -->
+	
+	
+	<!-- 爬虫服务 调用其它注册中心的服务-->
+	<!-- <dubbo:reference registry="crawlerQueryRegistry" interface="cn.golden.grab.single.provider.api.ICrawlerQueryService" id="crawlerQueryService" timeout="300000" />
+	 -->
+	
+</beans>  
