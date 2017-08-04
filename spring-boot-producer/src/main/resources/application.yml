@@ -1,11 +1,12 @@
-spring: 
-    application: 
+spring:
+    application:
         name: compute-service
 
-server: 
+server:
     port: 8082
-    
-eureka: 
-    client: 
-        serviceUrl: 
-            defaultZone: http://localhost:8081/eureka/
+
+eureka:
+    client:
+        serviceUrl:
+            # defaultZone: http://localhost:8081/eureka/
+            defaultZone: http://eureka.didispace.com/eureka/

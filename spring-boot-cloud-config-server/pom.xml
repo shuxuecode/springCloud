@@ -44,6 +44,13 @@
 
 	<build>
 		<finalName>spring-boot-cloud-config-server</finalName>
+		<plugins>
+			<plugin>
+				<groupId>com.rimerosolutions.maven.plugins</groupId>
+				<artifactId>wrapper-maven-plugin</artifactId>
+				<version>0.0.5</version>
+			</plugin>
+		</plugins>
 	</build>
 
 	<repositories>
