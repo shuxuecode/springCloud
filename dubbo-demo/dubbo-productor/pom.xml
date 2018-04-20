@@ -24,7 +24,6 @@
 			<groupId>com.zsx</groupId>
 			<artifactId>dubbo-api</artifactId>
 			<version>1.0.1</version>
-			<scope>provided</scope>
 		</dependency>
 
 		<!-- spring mvc -->

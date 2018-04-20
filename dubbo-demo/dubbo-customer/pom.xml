@@ -23,7 +23,6 @@
 			<groupId>com.zsx</groupId>
 			<artifactId>dubbo-api</artifactId>
 			<version>1.0.1</version>
-			<scope>provided</scope>
 		</dependency>
 
 		<!-- spring mvc -->
@@ -60,11 +59,30 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.31</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.github.sgroschupf</groupId>
 			<artifactId>zkclient</artifactId>
 			<version>0.1</version>
 		</dependency>
 
+
+		<!-- hystrix -->
+		<dependency>
+			<groupId>com.netflix.hystrix</groupId>
+			<artifactId>hystrix-core</artifactId>
+			<version>1.5.12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.netflix.hystrix</groupId>
+			<artifactId>hystrix-javanica</artifactId>
+			<version>1.5.12</version>
+		</dependency>
 
 
 		<dependency>
@@ -76,5 +94,17 @@
 	</dependencies>
 	<build>
 		<finalName>dubbo-customer</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>

@@ -1,0 +1,1 @@
+hystrixFilter=com.zsx.dubbo.filter.HystrixFilter

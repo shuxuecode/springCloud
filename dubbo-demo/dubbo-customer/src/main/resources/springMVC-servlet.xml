@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xmlns:p="http://www.springframework.org/schema/p"
-	   xmlns:context="http://www.springframework.org/schema/context" 
-	   xmlns:mvc="http://www.springframework.org/schema/mvc" 
-xsi:schemaLocation="http://www.springframework.org/schema/beans  
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd  
       http://www.springframework.org/schema/context  
       http://www.springframework.org/schema/context/spring-context-4.3.xsd  
       http://www.springframework.org/schema/mvc  
       http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
-	<!-- 注解扫描包 , 多个写法:com.zsx.web.*,org.weixin.*  (以完成bean创建和自动依赖注入的功能)-->
-	<context:component-scan base-package="com.zsx.*" >
+	<!-- 注解扫描包 , 多个写法:com.zsx.web.*,org.weixin.* (以完成bean创建和自动依赖注入的功能) -->
+	<context:component-scan base-package="com.zsx.*">
 		<!-- springMVC配置文件中将Service注解给去掉 -->
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Repository" />
 	</context:component-scan>
-	
+
 	<!-- <context:component-scan /> -->
 	<!-- 扫描指定的包中的类上的注解，常用的注解有： -->
 	<!-- @Controller 声明Action组件 -->
@@ -31,27 +33,52 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	<!-- @Transactional( rollbackFor={Exception.class}) 事务管理 -->
 	<!-- @ResponseBody将内容或对象作为 HTTP 响应正文返回，并调用适合HttpMessageConverter的Adapter转换对象，写入输出流 -->
 	<!-- @Scope("prototype") 设定bean的作用域 -->
-	
+
 
 	<!-- 启用spring mvc 注解 -->
 	<!-- <context:annotation-config /> -->
 
 	<!-- 开启注解方案1 -->
 	<!-- 注解方法处理 -->
-	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" /> -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" 
+		/> -->
 	<!-- 注解类映射处理 -->
-	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" /> -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" 
+		/> -->
 
 	<!-- 开启注解方案2 -->
-	<mvc:annotation-driven />
+	<!-- <mvc:annotation-driven /> -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+						<property name="dateFormat">
+							<bean class="java.text.SimpleDateFormat">
+								<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />
+							</bean>
+						</property>
+					</bean>
+				</property>
+			</bean>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 
 
 
 	<!-- 静态资源访问，方案1 -->
-	<!--<mvc:resources mapping="/static/**" location="/static/" /> 
-		<mvc:resources mapping="/images/**" location="/WEB-INF/images/" />
-		<mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
-		<mvc:resources mapping="/js/**" location="/WEB-INF/js/" />-->
+	<!--<mvc:resources mapping="/static/**" location="/static/" /> <mvc:resources 
+		mapping="/images/**" location="/WEB-INF/images/" /> <mvc:resources mapping="/css/**" 
+		location="/WEB-INF/css/" /> <mvc:resources mapping="/js/**" location="/WEB-INF/js/" 
+		/> -->
 
 	<!-- 静态资源访问，方案2 (表示不对静态资源如CSS、JS、HTML等进行拦截) -->
 	<mvc:default-servlet-handler />
@@ -64,12 +91,14 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<!--可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑 -->
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-	
+
 	<!-- Spring MVC JSON配置 -->
-	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-	    <property name="messageConverters">
-	    	<list>
-	    		<bean
+	<!-- 
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
 					class="org.springframework.http.converter.StringHttpMessageConverter">
 					<property name="supportedMediaTypes">
 						<list>
@@ -85,25 +114,18 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 						</list>
 					</property>
 				</bean>
-	    	
-	    	</list>
-	    	
-	    </property>
+
+			</list>
+
+		</property>
 	</bean>
- 
+ 	-->
+
 	<!-- 文件上传配置 -->
-	<!-- <bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="defaultEncoding">
-			<value>UTF-8</value>
-		</property>
-		<property name="maxUploadSize">
-			<value>104857600</value> 100M  1024 * 1024 * 100
-		</property>
-		<property name="maxInMemorySize">
-			<value>4096</value>
-		</property>
-	</bean> -->
-	
+	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+		<property name="defaultEncoding"> <value>UTF-8</value> </property> <property 
+		name="maxUploadSize"> <value>104857600</value> 100M 1024 * 1024 * 100 </property> 
+		<property name="maxInMemorySize"> <value>4096</value> </property> </bean> -->
+
 
 </beans>  

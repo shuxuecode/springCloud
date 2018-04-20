@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+
+
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 			http://www.springframework.org/schema/context
-			http://www.springframework.org/schema/context/spring-context-4.3.xsd"
-			>
+			http://www.springframework.org/schema/context/spring-context-4.3.xsd
+			http://www.springframework.org/schema/aop
+    		http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+			">
 
 	<!-- 将多个配置文件读取到容器中，交给Spring管理 -->
 	<bean id="propertyConfigurer"
@@ -19,9 +24,15 @@
 
 	<!-- 自动扫描dao和service包(自动注入) -->
 	<context:component-scan base-package="com.zsx.*" />
-	
-	
-	<!-- 引入同文件夹下的redis属性配置文件 -->
-    <import resource="applicationContext-dubboConsumer.xml"/>
+
+	<aop:aspectj-autoproxy/>
+	<bean id="hystrixAspect"
+		class="com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect"></bean>
+
+
+	<!-- 引入同文件夹下的属性配置文件 -->
+	<!---->
+	<import resource="applicationContext-dubboConsumer.xml" />
+
 
 </beans>			
