@@ -1,0 +1,16 @@
+server:
+    port: 18083
+
+spring:
+    application:
+        name: client-consumer
+
+##  dubbo springboot 配置
+#    dubbo:
+#        application:
+#            id: live-dubbo-consumer
+#            name: live-dubbo-consumer
+#        registry:
+#            address: zookeeper://10.37.251.63:2181
+
+

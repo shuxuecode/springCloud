@@ -1,0 +1,19 @@
+server:
+    port: 18082
+
+spring:
+    application:
+        name: server-producer
+
+## dubbo springboot 配置
+    dubbo:
+        application:
+            id: live-dubbo-provider
+            name: live-dubbo-provider
+        registry:
+            address: zookeeper://10.37.251.63:2181
+        server: true
+        protocol:
+            name: dubbo
+            port: 20888
+
