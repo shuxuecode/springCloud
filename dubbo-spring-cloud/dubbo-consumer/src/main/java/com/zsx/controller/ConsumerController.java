@@ -11,9 +11,9 @@ import java.util.UUID;
 @RestController
 public class ConsumerController {
 
-//    @Reference(check = false)//启动消费者不检查服务者是否存在
+    @Reference(check = false)//启动消费者不检查服务者是否存在
 //    @Reference(url = "dubbo://127.0.0.1:20888") // 这种方式直接指定url
-    @Reference(url = "dubbo://10.0.75.1:20888")
+//    @Reference(url = "dubbo://10.0.75.1:20888")
     public ServerAgent serverAgent;
 
     @RequestMapping(value = "/uuid", method = RequestMethod.GET)
