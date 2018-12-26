@@ -7,7 +7,7 @@ spring:
 
     cloud:
         consul:
-          host: 10.37.251.88
+          host: 127.0.0.1
           port: 8500
           discovery:
             health-check-path: /actuator/health
