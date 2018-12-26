@@ -1,0 +1,18 @@
+server:
+    port: 8082
+
+spring:
+    application:
+        name: server-producer
+
+    cloud:
+        consul:
+          host: 10.37.251.88
+          port: 8500
+          discovery:
+            tags: version=1.0,author=zsx
+            health-check-path: /actuator/health
+            health-check-interval: 5s
+            instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+            service-name: consul-server-producer
+

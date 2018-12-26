@@ -20,5 +20,7 @@ mvn archetype:generate -DgroupId=com.zsx -DartifactId=dubbo-producer -Darchetype
 mvn archetype:generate -DgroupId=com.zsx -DartifactId=dubbo-consumer -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.3
 
 
+mvn archetype:generate -DgroupId=com.zsx -DartifactId=spring-cloud-producer-consul -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeCatalog=internal
+
 
 ```

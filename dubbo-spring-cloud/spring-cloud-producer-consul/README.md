@@ -1,0 +1,1 @@
+https://www.cnblogs.com/yjmyzz/p/replace-eureka-with-consul.html
