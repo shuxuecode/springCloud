@@ -14,7 +14,7 @@
 		<!-- spring版本号 -->
 		<spring.version>4.3.18.RELEASE</spring.version>
 
-		<jackson.version>2.9.6</jackson.version>
+		<jackson.version>2.9.10.3</jackson.version>
 
 	</properties>
 
