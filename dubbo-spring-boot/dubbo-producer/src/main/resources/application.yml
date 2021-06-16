@@ -1,0 +1,17 @@
+
+spring:
+  application:
+    name: dubbo-provider
+
+dubbo:
+  application:
+    name: provider
+
+
+
+  registry:
+    address: zookeeper://127.0.0.1:2181
+
+  scan:
+    base-packages: com.zsx.service
+
