@@ -11,8 +11,8 @@ spring:
             id: live-dubbo-provider
             name: live-dubbo-provider
         registry:
-#            address: zookeeper://10.37.251.63:2181
-            address: redis://127.0.0.1:6379
+            address: zookeeper://127.0.0.1:2181
+#            address: redis://127.0.0.1:6379
         server: true
         protocol:
             name: dubbo

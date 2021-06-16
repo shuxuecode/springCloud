@@ -39,10 +39,17 @@
 
     <dependencies>
 
+<!--    这个很早之前的了    -->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.spring.boot</groupId>-->
+<!--            <artifactId>dubbo-spring-boot-starter</artifactId>-->
+<!--            <version>2.0.0</version>-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>com.alibaba.spring.boot</groupId>
+            <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>2.0.0</version>
+            <version>2.7.8</version>
         </dependency>
 
         <!-- 自定义接口 -->
@@ -55,7 +62,7 @@
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.4.6</version>
+            <version>3.4.9</version>
             <exclusions>
                 <!--
                 log4j日志组件和SpringBoot自带logback日志组件冲突
@@ -131,4 +138,19 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <repositories>
+        <repository>
+            <id>ali</id>
+            <name>ali</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
