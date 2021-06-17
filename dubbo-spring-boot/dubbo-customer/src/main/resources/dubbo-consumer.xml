@@ -35,11 +35,14 @@
     </dubbo:reference>
 
 
+<!--  todo  -->
+<!--    <dubbo:monitor protocol="registry" />-->
 
 
 <!--  直连 url="dubbo://127.0.0.1:20880"  -->
-<!--    <dubbo:reference id="dubboService" interface="com.zsx.client.service.DubboService"-->
-<!--                     url="dubbo://127.0.0.1:20880"/>-->
+<!--    <dubbo:reference id="dubboService" interface="com.zsx.client.service.DubboService" url="dubbo://127.0.0.1:20880"/>-->
+
+
 
 
 </beans>

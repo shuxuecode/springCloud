@@ -7,6 +7,8 @@ import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
 //@EnableDubboConfig
+
+// 加载xml配置文件
 @ImportResource(value = {"classpath:dubbo-provider.xml"})
 public class App {
 

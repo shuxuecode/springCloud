@@ -14,14 +14,23 @@
     <!--  注册中心  -->
     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
 
+    <!--  使用dubbo协议在20880端口暴露服务  -->
     <dubbo:protocol name="dubbo" port="20880"/>
 
     <dubbo:provider timeout="30000" threadpool="fixed" threads="50" accepts="1000"/>
 
     <dubbo:consumer check="false"/>
 
+
     <dubbo:service interface="com.zsx.service.DemoService" ref="demoServiceImpl"/>
 
     <dubbo:service interface="com.zsx.client.service.DubboService" ref="dubboServiceImpl" version="1.0.0"/>
+
+
+    <!-- 使用注解方式暴露接口，会自动扫描package下所有包中dubbo相关的注解，这样就不用在xml中再针对每个服务接口配置dubbo:service interface-->
+    <!-- <dubbo:annotation package="com.srpingboot.example"/> -->
+    <!--   这种方式过时了 todo -->
+
+
 
 </beans>
