@@ -1,0 +1,9 @@
+
+
+
+
+spring:
+  application:
+    name: dubbo-consumer
+
+

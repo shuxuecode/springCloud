@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://code.alibabatech.com/schema/dubbo
+                           http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+>
+
+    <dubbo:application name="springboot-dubbo-consumer"/>
+
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" timeout="60000"/>
+
+    <!--  check="false"  服务依赖检查  -->
+    <!--  cluster="failover"  设置调用集群策略  -->
+    <!--  loadbalance="random"  负载均衡  -->
+    <dubbo:consumer check="false" cluster="failover" loadbalance="random"/>
+
+    <!--
+    async="true" 是否异步调用，默认false
+    异步调用指的Consumer发起调用后，不是等待拿到结果，而是返回null同时可以拿到一个Future，过一会再拿Future去取。
+    适用于可以一次性并行发起多个请求的环境（例如某些集成页面，后台同时调用多个系统），总耗时等于最长时间的调用。
+    例如：一个页面要同时调用A(耗时600ms)，B(耗时500ms)，C(耗时100ms) 三个服务，
+    如果采取线性调用，则需要1200ms；采取异步调用则只需要600ms。
+
+
+    -->
+    <dubbo:reference id="dubboService" interface="com.zsx.client.service.DubboService" >
+        <dubbo:method name="uuid" async="true" /> <!-- 指定方法异步调用 -->
+        <!--
+            onreturn=""  设置一个回调监听器
+        -->
+    </dubbo:reference>
+
+
+
+
+<!--  直连 url="dubbo://127.0.0.1:20880"  -->
+<!--    <dubbo:reference id="dubboService" interface="com.zsx.client.service.DubboService"-->
+<!--                     url="dubbo://127.0.0.1:20880"/>-->
+
+
+</beans>

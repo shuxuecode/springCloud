@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 @Component
-@DubboService
+//@DubboService
 public class DemoServiceImpl implements DemoService {
 
     @Override
