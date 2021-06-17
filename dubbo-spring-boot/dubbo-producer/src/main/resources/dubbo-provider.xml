@@ -24,6 +24,23 @@
 
     <dubbo:service interface="com.zsx.service.DemoService" ref="demoServiceImpl"/>
 
+    <!--
+        interface : 服务接口名
+        ref : 服务对象实现引用
+        version : 服务版本，缺省值：0.0.0
+        group : 服务分组，当一个接口有多个实现，可以用分组区分
+        delay : 延迟注册服务时间(毫秒) ，设为-1时，表示延迟到Spring容器初始化完成时暴露服务
+        timeout : 远程服务调用超时时间(毫秒)
+        retries : 远程服务调用重试次数，不包括第一次调用，不需要重试请设为0，默认值为2
+        connections : 对每个提供者的最大连接数，rmi、http、hessian等短连接协议表示限制连接数，dubbo等长连接协表示建立的长连接个数，默认值为100
+        loadbalance ： 负载均衡策略，可选值：random,roundrobin,leastactive，分别表示：随机，轮询，最少活跃调用
+        async ： 是否缺省异步执行，不可靠异步，只是忽略返回值，不阻塞执行线程
+        
+
+
+
+
+    -->
     <dubbo:service interface="com.zsx.client.service.DubboService" ref="dubboServiceImpl" version="1.0.0"/>
 
 
