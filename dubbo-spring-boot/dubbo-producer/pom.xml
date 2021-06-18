@@ -54,6 +54,7 @@
         <!--            <version>0.9</version>-->
         <!--        </dependency>-->
 
+        <!--    使用curator作为zk客户端  -->
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>

@@ -39,7 +39,11 @@
     <!--  使用dubbo协议在20880端口暴露服务  -->
     <dubbo:protocol name="dubbo" port="20880"/>
 
-    <dubbo:provider timeout="30000" threadpool="fixed" threads="50" accepts="1000"/>
+    <!--
+        threads : 服务线程池大小(固定大小)，默认200
+        accepts : 服务提供者最大可接受连接数
+    -->
+    <dubbo:provider timeout="30000" threadpool="fixed" threads="50" accepts="1000" accesslog="true"/>
 
     <dubbo:consumer check="false"/>
 
