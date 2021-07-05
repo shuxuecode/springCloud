@@ -15,3 +15,10 @@ spring:
 #  scan:
 #    base-packages: com.zsx.service
 
+
+# 不能这么配置
+#dubbo:
+#  application:
+#    name: springboot-dubbo-provider1
+#  registry:
+#    address: zookeeper://127.0.0.1:2181
