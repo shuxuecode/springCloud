@@ -85,7 +85,8 @@
         register ： 该协议的服务是否注册到注册中心，默认为true
 
     -->
-    <dubbo:service interface="com.zsx.client.service.DubboService" ref="dubboServiceImpl" version="1.0.0"/>
+    <!--    <dubbo:service interface="com.zsx.client.service.DubboService" ref="dubboServiceImpl" version="1.0.0"/>-->
+    <dubbo:service interface="com.zsx.client.service.DubboService" ref="dubboServiceImpl" filter="demoFilter"/>
 
 
     <!-- 使用注解方式暴露接口，会自动扫描package下所有包中dubbo相关的注解，这样就不用在xml中再针对每个服务接口配置dubbo:service interface-->
