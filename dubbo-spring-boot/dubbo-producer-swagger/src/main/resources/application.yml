@@ -1,0 +1,18 @@
+server:
+  port: 9090
+
+
+
+spring:
+  application:
+    name: dubbo-producer-swagger
+
+dubbo:
+  application:
+    name: producer
+
+  registry:
+    address: zookeeper://127.0.0.1:2181
+
+  scan:
+    base-packages: com.zsx.service
