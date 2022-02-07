@@ -8,6 +8,8 @@ import java.util.Date;
  */
 public class RequestDto implements Serializable {
 
+    private static final long serialVersionUID = 5751232279525397604L;
+
     private Long id;
 
     private String name;

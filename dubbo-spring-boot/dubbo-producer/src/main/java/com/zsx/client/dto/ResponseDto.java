@@ -8,6 +8,8 @@ import java.io.Serializable;
  */
 public class ResponseDto implements Serializable {
 
+    private static final long serialVersionUID = 6558952464857724512L;
+
     private boolean success;
 
     private Integer code;
